@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>FFKIPAS - Beta Server VIP & No Lag | Download Gratis</title>
-    <!-- Google Fonts -->
+    <meta name="google-adsense-account" content="ca-pub-xxxxxxxx">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- ==================== SCRIPT ADSTERRA 1 (468x60) ==================== -->
@@ -99,6 +98,7 @@
             position: relative;
             background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format') center/cover no-repeat;
             background-attachment: fixed;
+            min-height: 100vh;
         }
         .hero-bg::before {
             content: "";
@@ -121,29 +121,31 @@
             box-shadow: 0 15px 30px -12px rgba(249, 115, 22, 0.5);
         }
 
-        /* Ad Containers */
+        /* Ad Containers - TIDAK MENGHALANGI */
         .ad-container {
             text-align: center;
-            margin: 15px auto;
+            margin: 20px auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             border-radius: 12px;
             overflow: hidden;
+            position: relative;
+            z-index: 5;
         }
         .ad-container iframe {
             max-width: 100%;
             border: none;
         }
         
-        /* Ad Sidebar */
+        /* Sidebar Ads - TIDAK MENGHALANGI tombol */
         .ad-sidebar-left {
             position: fixed;
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 100;
+            z-index: 10;
             display: block;
         }
         .ad-sidebar-right {
@@ -151,28 +153,36 @@
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 100;
+            z-index: 10;
             display: block;
         }
+        
+        /* Top Banner - TIDAK MENGHALANGI (diberi margin/padding) */
         .ad-top-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            z-index: 1000;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.5);
             text-align: center;
-            padding: 5px;
+            padding: 8px;
+            z-index: 5;
         }
+        
+        /* Bottom Banner - TIDAK MENGHALANGI */
         .ad-bottom-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            z-index: 1000;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.5);
             text-align: center;
-            padding: 5px;
+            padding: 8px;
+            z-index: 5;
+            margin-top: 20px;
+        }
+        
+        /* Content wrapper dengan padding agar tidak ketutupan */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         @media (max-width: 1200px) {
@@ -181,6 +191,16 @@
             }
         }
         
+        @media (max-width: 768px) {
+            .ad-top-banner, .ad-bottom-banner {
+                position: relative;
+            }
+            .content-wrapper {
+                padding: 10px;
+            }
+        }
+        
+        /* Modal Popup - Tetap di atas segalanya */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -192,7 +212,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
+            z-index: 1000;
             visibility: hidden;
             opacity: 0;
             transition: visibility 0.2s, opacity 0.25s ease;
@@ -285,18 +305,18 @@
             filter: brightness(1.08);
         }
         .star-rating { color: #fbbf24; letter-spacing: 3px; }
-        .btn-report { background: #dc2626; border: none; transition: 0.2s; }
+        .btn-report { background: #dc2626; border: none; transition: 0.2s; cursor: pointer; }
         .btn-report:hover { background: #b91c1c; transform: scale(1.02); }
         
         .toast {
             position: fixed;
-            bottom: 100px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: linear-gradient(135deg, #1f2937, #111827);
             padding: 12px 24px;
             border-radius: 50px;
-            z-index: 3000;
+            z-index: 2000;
             opacity: 0;
             transition: all 0.3s ease;
             border-left: 4px solid #f97316;
@@ -307,7 +327,6 @@
             opacity: 1;
         }
         
-        /* Loading overlay */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -315,7 +334,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.9);
-            z-index: 2500;
+            z-index: 1500;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -346,39 +365,77 @@
             .btn-modal { padding: 10px 16px; font-size: 0.85rem; }
         }
         
-        .content-wrapper {
-            padding-top: 70px;
-            padding-bottom: 70px;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .hero-text {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        /* Tombol download utama - GARANSI TIDAK KENA IKLAN */
+        .main-download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .main-download-buttons button {
+            cursor: pointer;
+        }
+        
+        .rating-box {
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.7rem 1.8rem;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 20px;
+        }
+        
+        /* Floating ad button - tidak mengganggu */
+        .floating-ad-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff8c00, #ff5500);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            z-index: 100;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+        .floating-ad-btn:hover {
+            transform: scale(1.05);
+            background: #ff5500;
         }
     </style>
 </head>
 <body>
 
-<!-- ==================== FIXED ADS ==================== -->
-<!-- Top Banner Ad (728x90) -->
+<!-- Top Banner - TIDAK FIXED, mengikuti aliran -->
 <div class="ad-top-banner">
-    <div id="container-60c3ab36ddc1e143362f2667b5c1aa6a"></div>
-    <script async="async" data-cfasync="false" src="https://pl29158313.profitablecpmratenetwork.com/60c3ab36ddc1e143362f2667b5c1aa6a/invoke.js"></script>
-</div>
-
-<!-- Bottom Banner Ad (320x50 mobile friendly) -->
-<div class="ad-bottom-banner">
-    <div class="ad-container" id="bottomAd"></div>
-</div>
-
-<!-- Sidebar Left Ad (160x600) -->
-<div class="ad-sidebar-left">
-    <div id="sidebarLeftAd"></div>
-</div>
-
-<!-- Sidebar Right Ad (160x300) -->
-<div class="ad-sidebar-right">
-    <div id="sidebarRightAd"></div>
+    <div id="topBannerAd"></div>
 </div>
 
 <div class="hero-bg">
     <div class="content-wrapper">
-        <header style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; flex-wrap: wrap; gap: 12px;">
+        <header>
             <div class="logo">
                 <h1 style="font-size: 1.9rem; font-weight: 800; background: linear-gradient(120deg, #FFB347, #FF7E05); background-clip: text; -webkit-background-clip: text; color: transparent;">FFKIPAS</h1>
             </div>
@@ -387,7 +444,7 @@
             </button>
         </header>
 
-        <main style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem 1.5rem 4rem;">
+        <div class="hero-text">
             <button id="reportBugBtn" class="btn-report" style="background: #dc2626; padding: 8px 28px; border-radius: 60px; font-weight: 600; margin-bottom: 1.5rem; cursor: pointer;">
                 <i class="fas fa-bug"></i> Lapor Masalah / Bug
             </button>
@@ -396,31 +453,50 @@
                 FFKIPAS
             </h1>
 
-            <p style="max-width: 780px; font-size: 1.1rem; background: rgba(0,0,0,0.45); padding: 12px 24px; border-radius: 60px; margin-bottom: 2rem;">
+            <p style="max-width: 780px; font-size: 1.1rem; background: rgba(0,0,0,0.45); padding: 12px 24px; border-radius: 60px; margin: 0 auto 2rem auto;">
                 Free Fire Beta Server VIP • Proxy No Lag • Unlock Bundle & Emote • Mabar Tembus Ori • Booyah Setiap Hari!
             </p>
             
-            <!-- Banner Ad 468x60 di tengah -->
-            <div class="ad-container" style="margin-bottom: 2rem;" id="middleAd1"></div>
+            <!-- Ad 468x60 di tengah - TIDAK MENGHALANGI -->
+            <div class="ad-container" style="margin-bottom: 20px;" id="ad468Container"></div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 2rem;">
-                <button id="googlePlayBtn" class="btn-glow" style="background: linear-gradient(100deg, #F97316, #EA580C); padding: 14px 34px; border-radius: 60px; font-weight: 700; color: white; cursor: pointer;">
+            <div class="main-download-buttons">
+                <button id="googlePlayBtn" class="btn-glow" style="background: linear-gradient(100deg, #F97316, #EA580C); padding: 14px 34px; border-radius: 60px; font-weight: 700; color: white; font-size: 1rem;">
                     <i class="fab fa-google-play"></i> GET IT ON Google Play / APK
                 </button>
-                <button id="appStoreBtn" class="btn-glow" style="background: linear-gradient(100deg, #2c3e66, #1f2b48); padding: 14px 34px; border-radius: 60px; font-weight: 700; color: white; cursor: pointer;">
+                <button id="appStoreBtn" class="btn-glow" style="background: linear-gradient(100deg, #2c3e66, #1f2b48); padding: 14px 34px; border-radius: 60px; font-weight: 700; color: white; font-size: 1rem;">
                     <i class="fab fa-apple"></i> Download on the App Store / iOS
                 </button>
             </div>
             
-            <!-- Banner Ad 300x250 -->
-            <div class="ad-container" style="margin-bottom: 2rem;" id="middleAd2"></div>
+            <!-- Ad 300x250 di tengah -->
+            <div class="ad-container" style="margin-bottom: 20px;" id="ad300Container"></div>
 
-            <div style="background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); border-radius: 60px; padding: 0.7rem 1.8rem; display: inline-flex; flex-wrap: wrap; gap: 1.2rem;">
+            <div class="rating-box">
                 <div><div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div> 4.8 dari 5</div>
                 <div><i class="fas fa-users"></i> <strong>10.000+</strong> User FFKIPAS</div>
             </div>
-        </main>
+        </div>
     </div>
+</div>
+
+<!-- Bottom Banner - TIDAK FIXED -->
+<div class="ad-bottom-banner">
+    <div id="bottomBannerAd"></div>
+</div>
+
+<!-- Sidebar Ads - TIDAK MENGHALANGI KONTEN UTAMA -->
+<div class="ad-sidebar-left">
+    <div id="sidebarLeftAd"></div>
+</div>
+
+<div class="ad-sidebar-right">
+    <div id="sidebarRightAd"></div>
+</div>
+
+<!-- Floating Ad Button - Opsional, tidak mengganggu -->
+<div class="floating-ad-btn" id="floatingAdBtn">
+    <i class="fas fa-gift"></i> Bonus Eksklusif!
 </div>
 
 <!-- Modal Download -->
@@ -433,23 +509,25 @@
         <div class="modal-body">
             <div class="download-group">
                 <div class="section-title"><i class="fab fa-android"></i> Android (RAM 4GB/8GB)</div>
-                <button class="btn-modal blue download-btn" data-url="https://sfl.gl/xr8XG" data-name="FFKIPAS JSON – WORK"><i class="fas fa-database"></i> FFKIPAS JSON – WORK</button>
-                <button class="btn-modal green download-btn" data-url="https://sfl.gl/y1hiEPkz" data-name="FFKIPAS 64BIT"><i class="fas fa-microchip"></i> FFKIPAS 64BIT – Android</button>
-                <button class="btn-modal green download-btn" data-url="https://sfl.gl/MqRTuE" data-name="FFKIPAS 32BIT"><i class="fas fa-mobile-alt"></i> FFKIPAS 32BIT – Android</button>
+                <button class="btn-modal blue download-btn" data-url="#" data-name="FFKIPAS JSON – WORK"><i class="fas fa-database"></i> FFKIPAS JSON – WORK</button>
+                <button class="btn-modal green download-btn" data-url="#" data-name="FFKIPAS 64BIT"><i class="fas fa-microchip"></i> FFKIPAS 64BIT – Android</button>
+                <button class="btn-modal green download-btn" data-url="#" data-name="FFKIPAS 32BIT"><i class="fas fa-mobile-alt"></i> FFKIPAS 32BIT – Android</button>
             </div>
             <div class="download-group">
                 <div class="section-title"><i class="fas fa-history"></i> FFBETA OLD (APK)</div>
-                <button class="btn-modal yellow download-btn" data-url="https://download.ffkipas.com/ffbeta-old-brabos.apk" data-name="FFBETA OLD BRABOS"><i class="fas fa-rocket"></i> FFBETA OLD BRABOS</button>
+                <button class="btn-modal yellow download-btn" data-url="#" data-name="FFBETA OLD BRABOS"><i class="fas fa-rocket"></i> FFBETA OLD BRABOS</button>
             </div>
             <div class="download-group">
                 <div class="section-title"><i class="fab fa-apple"></i> iOS (iPhone / iPad)</div>
                 <button class="btn-modal gray" disabled><i class="fas fa-hourglass-half"></i> FFKIPAS iOS (SOON)</button>
             </div>
             
-            <!-- Ad di dalam modal -->
+            <!-- Ad di dalam modal - kecil, tidak mengganggu -->
             <div class="ad-container" id="modalAd" style="margin-top: 15px;"></div>
             
-            <p style="font-size: 0.7rem; text-align: center; opacity: 0.6; margin-top: 10px;"><i class="fas fa-shield-alt"></i> Klik tombol download di atas</p>
+            <p style="font-size: 0.7rem; text-align: center; opacity: 0.6; margin-top: 10px;">
+                <i class="fas fa-shield-alt"></i> Klik tombol download di atas
+            </p>
         </div>
     </div>
 </div>
@@ -457,7 +535,7 @@
 <!-- Loading Overlay -->
 <div id="loadingOverlay" class="loading-overlay">
     <div class="spinner"></div>
-    <p style="margin-top: 20px; color: #ff8c00;">Memproses permintaan Anda...</p>
+    <p style="margin-top: 20px; color: #ff8c00;">Memproses...</p>
 </div>
 
 <div class="toast" id="toastMsg"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
@@ -465,8 +543,8 @@
 <script src="https://pl29158311.profitablecpmratenetwork.com/8c/d9/3f/8cd93f78385425522471c3125bb4eed6.js"></script>
 
 <script>
-    // ==================== KONFIGURASI DOWNLOAD ====================
-    // Ganti link download sesuai dengan link yang Anda miliki
+    // ==================== KONFIGURASI ====================
+    // 🔥 GANTI LINK DOWNLOAD DI SINI 🔥
     const DOWNLOAD_LINKS = {
         'FFKIPAS JSON – WORK': 'https://sfl.gl/xr8XG',
         'FFKIPAS 64BIT': 'https://sfl.gl/y1hiEPkz',
@@ -474,9 +552,8 @@
         'FFBETA OLD BRABOS': 'https://download.ffkipas.com/ffbeta-old-brabos.apk'
     };
     
-    // Link Adsterra tambahan untuk redirect
-    const ADSTERRA_REDIRECT = "https://www.profitablecpmratenetwork.com/fjy6dsr23d?key=001a92f094859101ef5e4bde39003139";
-    
+    // Link redirect iklan (opsional, tidak memaksa)
+    const AD_REDIRECT_URL = "https://www.profitablecpmratenetwork.com/fjy6dsr23d?key=001a92f094859101ef5e4bde39003139";
     // ==================== END KONFIGURASI ====================
     
     // DOM Elements
@@ -489,9 +566,7 @@
     const toast = document.getElementById('toastMsg');
     const toastText = document.getElementById('toastText');
     const loadingOverlay = document.getElementById('loadingOverlay');
-    
-    let pendingDownloadUrl = null;
-    let pendingDownloadName = null;
+    const floatingAdBtn = document.getElementById('floatingAdBtn');
     
     function showToast(message, isError = false) {
         toastText.innerHTML = message;
@@ -517,17 +592,21 @@
         loadingOverlay.classList.remove('active');
     }
     
-    // Fungsi untuk redirect ke link Adsterra terlebih dahulu
-    function redirectToAdsterraThenDownload(url, fileName) {
-        showLoading();
-        
-        // Buka link Adsterra di tab baru
-        if (ADSTERRA_REDIRECT && ADSTERRA_REDIRECT !== "#") {
-            window.open(ADSTERRA_REDIRECT, '_blank');
-            showToast("✅ Membuka halaman verifikasi - Selesaikan untuk melanjutkan download");
+    // Fungsi download - TANPA IKLAN FULLSCREEN YANG MENGHALANGI
+    function startDownload(url, fileName) {
+        if (!url || url === '#') {
+            showToast("Link download akan segera tersedia", true);
+            return;
         }
         
-        // Setelah 3 detik, mulai download
+        showLoading();
+        
+        // Optional: buka link redirect di tab baru (tidak memaksa, tidak menghalangi)
+        if (AD_REDIRECT_URL && AD_REDIRECT_URL !== '#') {
+            window.open(AD_REDIRECT_URL, '_blank');
+        }
+        
+        // Mulai download setelah delay singkat
         setTimeout(() => {
             hideLoading();
             
@@ -542,24 +621,23 @@
             
             showToast(`✅ Download dimulai: ${fileName}`);
             
-            // Tutup modal
             setTimeout(() => {
                 closeModalFunc();
             }, 1000);
-        }, 3000);
+        }, 1500);
     }
     
     // Event untuk semua tombol download
     const downloadBtns = document.querySelectorAll('.download-btn');
     downloadBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const url = btn.getAttribute('data-url');
             const name = btn.getAttribute('data-name');
+            const url = DOWNLOAD_LINKS[name];
             
-            if (url && name) {
-                redirectToAdsterraThenDownload(url, name);
+            if (url && url !== '#') {
+                startDownload(url, name);
             } else {
-                showToast("Link download error, coba lagi nanti", true);
+                showToast("Link download akan segera diupdate", true);
             }
         });
     });
@@ -576,6 +654,13 @@
         showToast("📢 Laporkan bug: support@ffkipas.com | @ffkipas_support");
     });
     
+    floatingAdBtn.addEventListener('click', () => {
+        if (AD_REDIRECT_URL && AD_REDIRECT_URL !== '#') {
+            window.open(AD_REDIRECT_URL, '_blank');
+            showToast("🎁 Membuka halaman bonus eksklusif!");
+        }
+    });
+    
     closeModalBtn.addEventListener('click', closeModalFunc);
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModalFunc();
@@ -586,41 +671,22 @@
         if (e.key === 'Escape' && modal.classList.contains('active')) closeModalFunc();
     });
     
-    // Exit popup
-    let hasShownExit = false;
-    document.addEventListener('mouseleave', (e) => {
-        if (e.clientY <= 0 && !hasShownExit) {
-            hasShownExit = true;
-            setTimeout(() => {
-                if (ADSTERRA_REDIRECT && ADSTERRA_REDIRECT !== "#") {
-                    window.open(ADSTERRA_REDIRECT, '_blank');
-                    showToast("🚀 Jangan pergi! Dapatkan akses VIP sekarang!");
-                }
-                hasShownExit = false;
-            }, 100);
-        }
-    });
-    
-    // Pindahkan container iklan ke posisi yang tepat
+    // Pindahkan elemen iklan ke container yang sesuai
     document.addEventListener('DOMContentLoaded', function() {
-        // Pindahkan ad 468x60 ke middleAd1
+        // Pindahkan ad 468x60
         const ad468 = document.querySelector('iframe[src*="da9e6c20fc23a4a35e8d739d7d4385bc"]');
-        const middleAd1 = document.getElementById('middleAd1');
-        if (ad468 && middleAd1) {
-            const parent = ad468.parentElement;
-            if (parent && parent !== middleAd1) {
-                middleAd1.appendChild(ad468);
-            }
+        const ad468Container = document.getElementById('ad468Container');
+        if (ad468 && ad468Container) {
+            ad468Container.appendChild(ad468);
+            ad468.style.maxWidth = '100%';
         }
         
-        // Pindahkan ad 300x250 ke middleAd2
+        // Pindahkan ad 300x250
         const ad300 = document.querySelector('iframe[src*="6d066e8282084745f94cd88d39033dce"]');
-        const middleAd2 = document.getElementById('middleAd2');
-        if (ad300 && middleAd2) {
-            const parent = ad300.parentElement;
-            if (parent && parent !== middleAd2) {
-                middleAd2.appendChild(ad300);
-            }
+        const ad300Container = document.getElementById('ad300Container');
+        if (ad300 && ad300Container) {
+            ad300Container.appendChild(ad300);
+            ad300.style.maxWidth = '100%';
         }
         
         // Pindahkan ad 160x600 ke sidebar kiri
@@ -637,34 +703,23 @@
             sidebarRight.appendChild(ad160x300);
         }
         
-        // Pindahkan ad 320x50 ke bottom
+        // Pindahkan ad 320x50 ke bottom banner
         const ad320x50 = document.querySelector('iframe[src*="cfe3991324f2b5bc0a32447bd0c086e0"]');
-        const bottomAd = document.getElementById('bottomAd');
-        if (ad320x50 && bottomAd) {
-            bottomAd.appendChild(ad320x50);
+        const bottomBanner = document.getElementById('bottomBannerAd');
+        if (ad320x50 && bottomBanner) {
+            bottomBanner.appendChild(ad320x50);
         }
         
-        // Cari ad 728x90 dan pastikan di top banner
+        // Pindahkan ad 728x90 ke top banner
         const ad728 = document.querySelector('iframe[src*="54d1b3d98e4a4308acbd47819b81f375"]');
-        if (ad728) {
-            const topBanner = document.querySelector('.ad-top-banner');
-            if (topBanner && ad728.parentElement !== topBanner) {
-                topBanner.insertBefore(ad728, topBanner.firstChild);
-            }
+        const topBanner = document.getElementById('topBannerAd');
+        if (ad728 && topBanner) {
+            topBanner.appendChild(ad728);
         }
         
-        // Ad tambahan untuk modal
-        const modalAd = document.getElementById('modalAd');
-        if (modalAd) {
-            const extraAd = document.createElement('div');
-            extraAd.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxx" data-ad-slot="xxx" data-ad-format="auto"></ins>';
-            modalAd.appendChild(extraAd);
-        }
+        console.log("%c✅ FFKIPAS - IKLAN TERPASANG TANPA MENGHALANGI DOWNLOAD", "color: #00ff00; font-size: 14px; font-weight: bold;");
+        console.log("%c💰 GANTI LINK DOWNLOAD di variabel DOWNLOAD_LINKS", "color: #ffcc00; font-size: 12px;");
     });
-    
-    console.log("%c🔥 FFKIPAS - ALL ADS ACTIVE! 🔥", "color: #ff8c00; font-size: 16px; font-weight: bold;");
-    console.log("%c💰 SEMUA IKLAN ADSTERRA TELAH TERPASANG 💰", "color: #00ff00; font-size: 14px;");
-    console.log("%c📱 GANTI LINK DOWNLOAD di variabel DOWNLOAD_LINKS 📱", "color: #ffcc00; font-size: 12px;");
 </script>
 </body>
 </html>
